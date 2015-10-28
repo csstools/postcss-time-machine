@@ -1,0 +1,44 @@
+.no-wrap {
+	white-space: no-wrap;
+}
+
+.vertical-align {
+	vertical-align: text-middle;
+}
+
+.background-size {
+	background-size: 25% 75%;
+	background-size: 50%;
+}
+
+.background-position {
+	background-position: 0% 100%;
+}
+
+.border-spacing {
+	border-spacing: 0% 100%;
+}
+
+.z-order {
+	z-order: 10;
+}
+
+.overflow-wrap {
+	white-space: overflow-wrap;
+}
+
+.corner-radius {
+	corner-radius: 1em;
+}
+
+.current-color {
+	color: current-color;
+}
+
+.rgb {
+	color: rgb(255, 0, 0, 255);
+}
+
+.hsl {
+	color: hsl(120, 60%, 70%, 50%);
+}

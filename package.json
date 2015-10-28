@@ -1,0 +1,63 @@
+{
+  "name": "postcss-time-machine",
+  "version": "1.0.0",
+  "description": "Fix mistakes in the design of CSS itself",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "mistakes",
+    "fixes",
+    "corrections",
+    "white-spaces",
+    "vertical-aligns",
+    "current",
+    "color",
+    "backgrounds",
+    "positions",
+    "sizes",
+    "corners",
+    "radius",
+    "depth",
+    "z-index",
+    "vertical",
+    "align",
+    "text",
+    "middle",
+    "white",
+    "space",
+    "nowrap",
+    "break",
+    "word",
+    "rgba",
+    "hsla"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathantneal/postcss-time-machine.git"
+  },
+  "homepage": "https://github.com/jonathantneal/postcss-time-machine",
+  "bugs": {
+    "url": "https://github.com/jonathantneal/postcss-time-machine/issues"
+  },
+  "dependencies": {
+    "postcss": "^5.0.10",
+    "postcss-value-parser": "^3.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^1.7.3",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "lint": "eslint . --ignore-path .gitignore",
+    "test-fixtures": "tape test/*.js | tap-spec",
+    "test": "npm run lint && npm run test-fixtures"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
+}
