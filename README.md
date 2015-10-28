@@ -8,6 +8,10 @@
 
 They specifically requested that these should be corrected “*if anyone invents a time machine*”.
 
+---
+
+### no-wrap
+
 > In `white-space`, `nowrap` should be called `no-wrap`.
 
 ```css
@@ -23,6 +27,8 @@ h1 {
 	white-space: nowrap;
 }
 ```
+
+### text-middle
 
 > In `vertical-align`, `middle` should be called `text-middle`.
 
@@ -40,6 +46,8 @@ button {
 }
 ```
 
+### background-size
+
 > In `background-size`, having one value should duplicate its value, not default the second one to `auto`.
 
 ```css
@@ -55,6 +63,8 @@ header {
 	background-size: 75% 75%;
 }
 ```
+
+### background-position
 
 > `background-position` and `border-spacing` (all 2-axis properties) should take *vertical* first, to match with the 4-direction properties like `margin`.
 
@@ -80,6 +90,8 @@ table {
 }
 ```
 
+### z-order
+
 > `z-index` should be called `z-order`.
 
 ```css
@@ -95,6 +107,8 @@ aside {
 	z-index: 10;
 }
 ```
+
+### overflow-wrap
 
 > `word-wrap`/`overflow-wrap` should not exist, and `overflow-wrap` should be a keyword on `white-space`.
 
@@ -112,6 +126,8 @@ a {
 }
 ```
 
+### corner-radius
+
 > `border-radius` should be `corner-radius`.
 
 ```css
@@ -128,6 +144,8 @@ button {
 }
 ```
 
+### current-color
+
 > `currentcolor` should be `current-color`.
 
 ```css
@@ -143,6 +161,8 @@ button {
 	box-shadow: 0 0 5px solid currentColor;
 }
 ```
+
+### rgb & hsl
 
 > `rgba()` and `hsla()` should not exist, and `rgb()` and `hsl()` should have an optional fourth *alpha* parameter (which should use the same format as R, G, and B or S and L).
 
@@ -245,7 +265,7 @@ grunt.initConfig({
 
 ## Options
 
-Any feature of [Time Machine] may be disabled in the plugin options.
+Any feature of [Time Machine] may be disabled by passing a `false` value to its feature key.
 
 Example:
 ```js
@@ -257,9 +277,9 @@ require('postcss-time-machine')({
 Features include `background-position`, `background-size`, `border-spacing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, and `z-order`.
 
 [ci]:      https://travis-ci.org/jonathantneal/postcss-time-machine
-[ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-write-svg.svg
+[ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg
 [npm]:     https://www.npmjs.com/package/postcss-time-machine
-[npm-img]: https://img.shields.io/npm/v/postcss-write-svg.svg
+[npm-img]: https://img.shields.io/npm/v/postcss-time-machine.svg
 
 [Gulp PostCSS]:  https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
