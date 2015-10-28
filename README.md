@@ -92,7 +92,7 @@ table {
 
 ### z-order
 
-> `z-index` should be called `z-order`.
+> `z-order` should be called `z-index`.
 
 ```css
 /* before */
