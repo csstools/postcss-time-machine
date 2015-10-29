@@ -171,7 +171,7 @@ button {
 
 header {
 	background-color: rgb(0, 0, 255, 102);
-	color: hsla(170, 50%, 45%, 80%);
+	color: hsl(170, 50%, 45%, 80%);
 }
 
 /* after */
