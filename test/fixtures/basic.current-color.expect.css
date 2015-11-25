@@ -42,3 +42,9 @@
 .hsl {
 	color: hsla(120, 60%, 70%, 0.5);
 }
+
+:link,:visited {}
+
+a:link,a:visited {}
+
+a:not(a:link,a:visited) {}

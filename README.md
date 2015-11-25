@@ -182,6 +182,24 @@ header {
 }
 ```
 
+### :link
+
+> `:link` should have had the `:any-link` semantics all along.
+
+```css
+/* before */
+
+:link {
+	color: blue;
+}
+
+/* after */
+
+:link, :visited {
+	color: blue;
+}
+```
+
 ## Usage
 
 Add [Time Machine] to your build tool:
@@ -274,7 +292,7 @@ require('postcss-time-machine')({
 })
 ```
 
-Features include `background-position`, `background-size`, `border-spacing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, and `z-order`.
+Features include `background-position`, `background-size`, `border-spacing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
 
 [ci]:      https://travis-ci.org/jonathantneal/postcss-time-machine
 [ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg

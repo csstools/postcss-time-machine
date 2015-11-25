@@ -8,6 +8,12 @@ var tests = {
 			options: {
 				'current-color': false
 			}
+		},
+		'basic:link': {
+			message: 'supports { ":link": false }',
+			options: {
+				':link': false
+			}
 		}
 	}
 };

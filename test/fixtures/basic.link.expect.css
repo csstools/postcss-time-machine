@@ -43,8 +43,8 @@
 	color: hsla(120, 60%, 70%, 0.5);
 }
 
-:link,:visited {}
+:link {}
 
-a:link,a:visited {}
+a:link {}
 
-a:not(a:link,a:visited) {}
+a:not(a:link) {}
