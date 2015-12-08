@@ -101,7 +101,11 @@ module.exports = postcss.plugin('postcss-time-machine', function (opts) {
 			}).process(rule.selector).result;
 		});
 
+		var declRaws;
+
 		css.walkDecls(function (decl) {
+			declRaws = declRaws || decl.raws;
+
 			var prop   = decl.prop;
 			var values = valueParser(decl.value);
 
@@ -117,5 +121,14 @@ module.exports = postcss.plugin('postcss-time-machine', function (opts) {
 				}
 			}).toString();
 		});
+
+		css.prepend(postcss.rule({
+			nodes: [postcss.decl({
+				prop:  'box-sizing',
+				raws:  declRaws,
+				value: 'border-box'
+			})],
+			selector: '*'
+		}));
 	};
 });

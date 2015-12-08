@@ -200,6 +200,18 @@ header {
 }
 ```
 
+### border-box
+
+> Box-sizing should be `border-box` by default.
+
+```css
+/* prepended to css */
+
+* {
+	box-sizing: border-box;
+}
+```
+
 ## Usage
 
 Add [Time Machine] to your build tool:
