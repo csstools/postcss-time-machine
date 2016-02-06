@@ -1,6 +1,6 @@
 # Time Machine
 
-<img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
+<a href="https://github.com/postcss/postcss"><img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="80" height="80" align="right"></a>
 
 [![NPM Version][npm-img]][npm] [![Build Status][ci-img]][ci]
 
@@ -300,11 +300,11 @@ Any feature of [Time Machine] may be disabled by passing a `false` value to its 
 Example:
 ```js
 require('postcss-time-machine')({
-    rgba: false
+    rgb: false
 })
 ```
 
-Features include `background-position`, `background-size`, `border-spacing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
+Features include `background-position`, `background-size`, `border-spacing`, `box-sizing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
 
 [ci]:      https://travis-ci.org/jonathantneal/postcss-time-machine
 [ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg

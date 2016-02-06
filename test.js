@@ -14,16 +14,22 @@ var tests = {
 			options: {
 				':link': false
 			}
+		},
+		'basic:box-sizing': {
+			message: 'supports { "box-sizing": false }',
+			options: {
+				'box-sizing': false
+			}
 		}
 	}
 };
 
 var debug = true;
-var dir   = './test/fixtures/';
+var dir   = './test/';
 
 var fs      = require('fs');
 var path    = require('path');
-var plugin  = require('../');
+var plugin  = require('./');
 var test    = require('tape');
 
 Object.keys(tests).forEach(function (name) {
