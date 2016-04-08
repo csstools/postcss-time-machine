@@ -123,14 +123,24 @@ module.exports = postcss.plugin('postcss-time-machine', function (opts) {
 		});
 
 		if (!opts || !('box-sizing' in opts) || opts['box-sizing']) {
-			css.prepend(postcss.rule({
-				nodes: [postcss.decl({
-					prop:  'box-sizing',
-					raws:  declRaws,
-					value: 'border-box'
-				})],
-				selector: '*'
-			}));
+			css.prepend(
+				postcss.rule({
+					nodes: [postcss.decl({
+						prop:  'box-sizing',
+						raws:  declRaws,
+						value: 'border-box'
+					})],
+					selector: 'html'
+				}),
+				postcss.rule({
+					nodes: [postcss.decl({
+						prop:  'box-sizing',
+						raws:  declRaws,
+						value: 'inherit'
+					})],
+					selectors: ['*', '*:before', '*:after']
+				})
+			);
 		}
 	};
 });
