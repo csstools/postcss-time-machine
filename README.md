@@ -207,8 +207,11 @@ header {
 ```css
 /* prepended to css */
 
-* {
-	box-sizing: border-box;
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 ```
 
