@@ -126,17 +126,19 @@ module.exports = postcss.plugin('postcss-time-machine', function (opts) {
 			css.prepend(
 				postcss.rule({
 					nodes: [postcss.decl({
-						prop:  'box-sizing',
-						raws:  declRaws,
-						value: 'border-box'
+						prop:   'box-sizing',
+						raws:   declRaws,
+						value:  'border-box',
+						parent: postcss.root()
 					})],
 					selector: 'html'
 				}),
 				postcss.rule({
 					nodes: [postcss.decl({
-						prop:  'box-sizing',
-						raws:  declRaws,
-						value: 'inherit'
+						prop:   'box-sizing',
+						raws:   declRaws,
+						value:  'inherit',
+						parent: postcss.root()
 					})],
 					selectors: ['*', '*:before', '*:after']
 				})
