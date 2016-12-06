@@ -15,6 +15,7 @@
 .background-size {
 	background-size: 25% 75%;
 	background-size: 50% 50%;
+	background-size: cover;
 }
 
 .background-position {
@@ -47,6 +48,18 @@
 
 .hsl {
 	color: hsla(120, 60%, 70%, 0.5);
+}
+
+.line-height {
+	line-height: 2;
+}
+
+.marker-style {
+	list-style: square;
+}
+
+.display-type {
+	display: block;
 }
 
 :link,:visited {}

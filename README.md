@@ -1,8 +1,10 @@
-# Time Machine
+# Time Machine <a href="https://github.com/postcss/postcss"><img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right"></a>
 
-<a href="https://github.com/postcss/postcss"><img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="80" height="80" align="right"></a>
-
-[![NPM Version][npm-img]][npm] [![Build Status][ci-img]][ci]
+[![NPM Version][npm-img]][npm-url]
+[![Build Status][cli-img]][cli-url]
+[![Licensing][lic-image]][lic-url]
+[![Changelog][log-image]][log-url]
+[![Gitter Chat][git-image]][git-url]
 
 [Time Machine] fixes mistakes in the design of CSS itself, as [described by the CSSWG](https://wiki.csswg.org/ideas/mistakes).
 
@@ -182,6 +184,42 @@ header {
 }
 ```
 
+### line-height
+
+> `line-height: <percentage>` should compute to the equivalent `line-height: <number>`, so that it effectively inherits as a percentage not a length.
+
+```css
+/* before */
+
+p {
+	line-height: 200%;
+}
+
+/* after */
+
+p {
+	line-height: 2;
+}
+```
+
+### marker-style
+
+> The `list-style` properties should be called `marker-style`.
+
+```css
+/* before */
+
+.georgian-list {
+	marker-style: square;
+}
+
+/* after */
+
+.georgian-list {
+	list-style: square;
+}
+```
+
 ### :link
 
 > `:link` should have had the `:any-link` semantics all along.
@@ -306,10 +344,16 @@ require('postcss-time-machine')({
 
 Features include `background-position`, `background-size`, `border-spacing`, `box-sizing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
 
-[ci]:      https://travis-ci.org/jonathantneal/postcss-time-machine
-[ci-img]:  https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg
-[npm]:     https://www.npmjs.com/package/postcss-time-machine
+[npm-url]: https://www.npmjs.com/package/postcss-time-machine
 [npm-img]: https://img.shields.io/npm/v/postcss-time-machine.svg
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-time-machine
+[cli-img]: https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg
+[lic-url]: LICENSE.md
+[lic-image]: https://img.shields.io/npm/l/postcss-time-machine.svg
+[log-url]: CHANGELOG.md
+[log-image]: https://img.shields.io/badge/changelog-md-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [Gulp PostCSS]:  https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
