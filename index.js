@@ -1,7 +1,9 @@
+// tooling
 const postcss        = require('postcss');
 const selectorParser = require('postcss-selector-parser');
 const valueParser    = require('postcss-value-parser');
 
+// corrections
 const corrections = {
 	values: {
 		'current-color': (value) => {
@@ -106,13 +108,14 @@ const corrections = {
 };
 
 // plugin
-module.exports = postcss.plugin('postcss-time-machine', (opts) => (css) => {
+module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => {
+	// walk each rule
 	css.walkRules((rule) => {
 		rule.selector = selectorParser((selectors) => {
 			selectors.walk((node) => {
 				const key = node.value;
 
-				if (key in corrections.selectors && (!opts || !(key in opts) || opts[key])) {
+				if (key in corrections.selectors && (!(key in opts) || opts[key])) {
 					corrections.selectors[key](node, rule);
 				}
 			});
@@ -121,28 +124,30 @@ module.exports = postcss.plugin('postcss-time-machine', (opts) => (css) => {
 
 	let declRaws;
 
+	// walk each declaration
 	css.walkDecls((decl) => {
 		declRaws = declRaws || decl.raws;
 
 		const prop   = decl.prop;
 		const values = valueParser(decl.value);
 
-		if (prop in corrections.properties && (!opts || !(prop in opts) || opts[prop])) {
+		if (prop in corrections.properties && (!(prop in opts) || opts[prop])) {
 			corrections.properties[prop](decl, values);
 		}
 
 		decl.value = values.walk((value) => {
 			const key = value.value;
 
-			if (key in corrections.values && (!opts || !(key in opts) || opts[key])) {
+			if (key in corrections.values && (!(key in opts) || opts[key])) {
 				corrections.values[key](value, decl);
 			}
 		}).toString();
 	});
 
-	if (!opts || !('box-sizing' in opts) || opts['box-sizing']) {
+	if (!('box-sizing' in opts) || opts['box-sizing']) {
 		const rules = [];
 
+		// walk each at-rule
 		css.walkAtRules('import', (rule) => {
 			rules.push(rule);
 			rule.remove();
@@ -162,3 +167,10 @@ module.exports = postcss.plugin('postcss-time-machine', (opts) => (css) => {
 		css.prepend(rules);
 	}
 });
+
+// override plugin#process
+module.exports.process = function (cssString, pluginOptions, processOptions) {
+	return postcss([
+		0 in arguments ? module.exports(pluginOptions) : module.exports()
+	]).process(cssString, processOptions);
+};

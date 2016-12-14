@@ -1,6 +1,11 @@
 # Changes to Time Machine
 
-### 2.0.0 (November 23, 2016)
+### 2.0.1 (December 8, 2016)
+
+- Updated: Use destructing assignment on plugin options
+- Updated: Use template literals
+
+### 2.0.0 (December 6, 2016)
 
 - Added: `line-height` percentage value
 - Added: `marker-style` property
