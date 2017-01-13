@@ -100,13 +100,13 @@ table {
 /* before */
 
 aside {
-	z-order: 10;
+	z-index: 10;
 }
 
 /* after */
 
 aside {
-	z-index: 10;
+	z-order: 10;
 }
 ```
 
