@@ -122,12 +122,8 @@ module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => 
 		}).process(rule.selector).result;
 	});
 
-	let declRaws;
-
 	// walk each declaration
 	css.walkDecls((decl) => {
-		declRaws = declRaws || decl.raws;
-
 		const prop   = decl.prop;
 		const values = valueParser(decl.value);
 
@@ -145,26 +141,46 @@ module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => 
 	});
 
 	if (!('box-sizing' in opts) || opts['box-sizing']) {
-		const rules = [];
+		const input = {
+			css: '* { box-sizing: border-box }',
+			file: 'postcss-time-machine'
+		};
+
+		let lastImport;
 
 		// walk each at-rule
 		css.walkAtRules('import', (rule) => {
-			rules.push(rule);
-			rule.remove();
+			lastImport = rule;
 		});
 
-		rules.push(
+		lastImport.parent.insertAfter(
+			lastImport,
 			postcss.rule({
 				nodes: [postcss.decl({
 					prop:  'box-sizing',
-					raws:  declRaws,
+					source: {
+						input: input,
+						start: {
+							line: 1,
+							column: 4
+						}
+					},
 					value: 'border-box'
 				})],
-				selector: '*'
+				raws: {
+					after: '',
+					semicolon: false
+				},
+				selector: '*',
+				source: {
+					input: input,
+					start: {
+						line: 1,
+						column: 1
+					}
+				}
 			})
 		);
-
-		css.prepend(rules);
 	}
 });
 

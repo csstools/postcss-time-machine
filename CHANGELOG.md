@@ -1,5 +1,9 @@
 # Changes to Time Machine
 
+### Head
+
+- Updated: `box-sizing` does not re-orient imports.
+
 ### 2.0.1 (December 8, 2016)
 
 - Updated: Use destructing assignment on plugin options
