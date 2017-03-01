@@ -1,10 +1,10 @@
-# Time Machine <a href="https://github.com/postcss/postcss"><img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right"></a>
+# Time Machine [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">](PostCSS)
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Licensing][lic-image]][lic-url]
-[![Changelog][log-image]][log-url]
-[![Gitter Chat][git-image]][git-url]
+[![Licensing][lic-img]][lic-url]
+[![Changelog][log-img]][log-url]
+[![Gitter Chat][git-img]][git-url]
 
 [Time Machine] fixes mistakes in the design of CSS itself, as [described by the CSSWG](https://wiki.csswg.org/ideas/mistakes).
 
@@ -349,11 +349,11 @@ Features include `background-position`, `background-size`, `border-spacing`, `bo
 [cli-url]: https://travis-ci.org/jonathantneal/postcss-time-machine
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg
 [lic-url]: LICENSE.md
-[lic-image]: https://img.shields.io/npm/l/postcss-time-machine.svg
+[lic-img]: https://img.shields.io/npm/l/postcss-time-machine.svg
 [log-url]: CHANGELOG.md
-[log-image]: https://img.shields.io/badge/changelog-md-blue.svg
+[log-img]: https://img.shields.io/badge/changelog-md-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[git-image]: https://img.shields.io/badge/chat-gitter-blue.svg
+[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
 
 [Gulp PostCSS]:  https://github.com/postcss/gulp-postcss
 [Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
