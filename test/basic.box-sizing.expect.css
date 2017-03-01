@@ -22,6 +22,10 @@
 	border-spacing: 100% 0%;
 }
 
+.depth {
+	z-index: 10;
+}
+
 .z-order {
 	z-index: 10;
 }

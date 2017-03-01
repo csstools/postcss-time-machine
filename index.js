@@ -55,6 +55,9 @@ const corrections = {
 		'display-type': (decl) => {
 			decl.prop = 'display';
 		},
+		'depth': (decl) => {
+			decl.prop = 'z-index';
+		},
 		'line-height': (decl, values) => {
 			values.walk((node) => {
 				if (node.type === 'word' && node.value.slice(-1) === '%') {
