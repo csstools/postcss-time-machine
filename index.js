@@ -77,17 +77,13 @@ const corrections = {
 		},
 		'white-space': (decl, values) => {
 			values.walk((node) => {
-				if (node.type === 'word' && node.value === 'no-wrap') {
-					node.value = 'nowrap';
-				}
-
-				if (node.type === 'word' && node.value === 'overflow-wrap') {
-					decl.cloneAfter({
-						prop:  'word-wrap',
-						value: 'break-word'
-					});
-
-					decl.remove();
+				if (node.type === 'word') {
+					if (node.value === 'no-wrap') {
+						node.value = 'nowrap';
+					} else if (node.value === 'overflow-wrap') {
+						decl.prop = 'word-wrap';
+						node.value = 'break-word';
+					}
 				}
 			});
 		},

@@ -4,6 +4,7 @@
 
 - Added: `depth` property.
 - Updated: `box-sizing` does not re-orient imports.
+- Updated: `white-space` transforms.
 
 ### 2.0.1 (December 8, 2016)
 
