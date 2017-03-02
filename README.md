@@ -94,18 +94,26 @@ table {
 
 ### z-order
 
-> `z-index` should be called `z-order`.
+> `z-index` should be called `z-order` or `depth`.
 
 ```css
 /* before */
 
 aside {
+	depth: 10;
+}
+
+figure {
 	z-order: 10;
 }
 
 /* after */
 
 aside {
+	z-index: 10;
+}
+
+figure {
 	z-index: 10;
 }
 ```
@@ -342,7 +350,7 @@ require('postcss-time-machine')({
 })
 ```
 
-Features include `background-position`, `background-size`, `border-spacing`, `box-sizing`, `corner-radius`, `current-color`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
+Features include `background-position`, `background-size`, `border-spacing`, `box-sizing`, `corner-radius`, `current-color`, `depth`, `hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
 
 [npm-url]: https://www.npmjs.com/package/postcss-time-machine
 [npm-img]: https://img.shields.io/npm/v/postcss-time-machine.svg
