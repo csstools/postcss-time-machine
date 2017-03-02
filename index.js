@@ -180,8 +180,8 @@ module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => 
 		// get the last import at-rule
 		let lastImport;
 
-		css.walkAtRules('import', (rule) => {
-			lastImport = rule;
+		css.walkAtRules('import', (atRule) => {
+			lastImport = atRule;
 		});
 
 		if (lastImport) {
