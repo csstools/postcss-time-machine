@@ -1,6 +1,6 @@
 # Changes to Time Machine
 
-### Head
+### 2.1.0
 
 - Added: `depth` property.
 - Updated: `box-sizing` does not re-orient imports.

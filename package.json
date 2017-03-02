@@ -1,6 +1,6 @@
 {
   "name": "postcss-time-machine",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Fix mistakes in the design of CSS itself",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
