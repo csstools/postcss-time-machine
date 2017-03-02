@@ -20,6 +20,9 @@ module.exports = {
 			options: {
 				'box-sizing': false
 			}
+		},
+		'no-import': {
+			message: 'supports basic usage ( without import )'
 		}
 	}
 };
