@@ -1,3 +1,5 @@
+'use strict';
+
 // tooling
 const postcss        = require('postcss');
 const selectorParser = require('postcss-selector-parser');
@@ -107,7 +109,9 @@ const corrections = {
 };
 
 // plugin
-module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => {
+module.exports = postcss.plugin('postcss-time-machine', (rawopts) => (css) => {
+	const opts = rawopts || {};
+
 	// walk each rule
 	css.walkRules((rule) => {
 		rule.selector = selectorParser((selectors) => {
@@ -193,10 +197,3 @@ module.exports = postcss.plugin('postcss-time-machine', (opts = {}) => (css) => 
 		}
 	}
 });
-
-// override plugin#process
-module.exports.process = function (cssString, pluginOptions, processOptions) {
-	return postcss([
-		0 in arguments ? module.exports(pluginOptions) : module.exports()
-	]).process(cssString, processOptions);
-};

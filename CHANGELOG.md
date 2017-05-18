@@ -1,6 +1,11 @@
 # Changes to Time Machine
 
-### 2.1.0
+### 3.0.0 (May 17, 2016)
+
+- Added: Support for PostCSS 6.
+- Added: Support for Node 4.
+
+### 2.1.0 (March 1, 2017)
 
 - Added: `depth` property.
 - Updated: `box-sizing` does not re-orient imports.
