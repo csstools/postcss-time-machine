@@ -7,33 +7,43 @@
   "repository": "jonathantneal/postcss-time-machine",
   "homepage": "https://github.com/jonathantneal/postcss-time-machine#readme",
   "bugs": "https://github.com/jonathantneal/postcss-time-machine/issues",
-  "main": "index.js",
+  "main": "index.cjs.js",
+  "module": "index.es.js",
   "files": [
-    "index.js"
+    "index.cjs.js",
+    "index.es.js"
   ],
   "scripts": {
-    "clean": "git clean -X -d -f",
-    "prepublish": "npm test",
+    "prepublishOnly": "npm test",
+    "pretest": "rollup -c .rollup.js --silent",
     "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
+    "test:ec": "echint --ignore index.*.js test",
+    "test:js": "eslint *.js --cache --ignore-path .gitignore --quiet",
     "test:tape": "postcss-tape"
   },
   "engines": {
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "postcss": "^6.0.1",
-    "postcss-selector-parser": "^2.2.3",
-    "postcss-value-parser": "^3.3.0"
+    "postcss": "^6.0.21",
+    "postcss-selector-parser": "^4.0.0-rc.1",
+    "postcss-value-parser": "^3.3.0",
+    "postcss-values-parser": "^1.5.0"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-dev": "2.0.0",
-    "postcss-tape": "2.0.1",
-    "pre-commit": "^1.2.2"
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-dev": "^2.0.0",
+    "postcss-tape": "^2.2.0",
+    "pre-commit": "^1.2.2",
+    "rollup": "^0.58.1",
+    "rollup-plugin-babel": "^3.0.3"
   },
   "eslintConfig": {
-    "extends": "dev"
+    "extends": "dev",
+    "parser": "babel-eslint"
   },
   "keywords": [
     "postcss",
