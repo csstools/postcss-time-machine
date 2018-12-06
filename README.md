@@ -1,134 +1,33 @@
-# Time Machine [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
+# PostCSS Time Machine [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS" width="90" height="90" align="right">][postcss]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
-[![Windows Build Status][win-img]][win-url]
 [![Support Chat][git-img]][git-url]
 
-[Time Machine] fixes mistakes in the design of CSS itself, as
+[PostCSS Time Machine] fixes mistakes in the design of CSS itself, as
 [described by the CSSWG](https://wiki.csswg.org/ideas/mistakes).
 
 They specifically requested that these should be corrected
 “*if anyone invents a time machine*”.
 
 ```bash
-npm install postcss-time-machine --save-dev
+npx postcss-time-machine SOURCE.css TRANSFORMED.css
 ```
 
-## Fixes
+## Safe Fixes
 
-### no-wrap
+These fixes do not change the way CSS normally works. They can be individually
+disabled by passing their short name into the [`fixes` option](#fixes).
 
-> In `white-space`, `nowrap` should be called `no-wrap`.
+### border-box
 
-```css
-h1 {
-  white-space: no-wrap;
-}
-
-/* becomes */
-
-h1 {
-  white-space: nowrap;
-}
-```
-
-### text-middle
-
-> In `vertical-align`, `middle` should be called `text-middle`.
+> Box-sizing should be `border-box` by default.
 
 ```css
-button {
-  vertical-align: text-middle;
-}
+/* prepended to your css */
 
-/* becomes */
-
-button {
-  vertical-align: middle;
-}
-```
-
-### background-size
-
-> In `background-size`, having one value should duplicate its value, not
-default the second one to `auto`.
-
-```css
-header {
-  background-size: 75%;
-}
-
-/* becomes */
-
-header {
-  background-size: 75% 75%;
-}
-```
-
-### background-position
-
-> `background-position` and `border-spacing` (all 2-axis properties) should
-  take *vertical* first, to match with the 4-direction properties like `margin`.
-
-```css
-body {
-  background-position: 0% 50%;
-}
-
-table {
-  border-spacing: 10px 5px;
-}
-
-/* becomes */
-
-body {
-  background-position: 50% 0%;
-}
-
-table {
-  border-spacing: 5px 10px;
-}
-```
-
-### z-order
-
-> `z-index` should be called `z-order` or `depth`.
-
-```css
-aside {
-  depth: 10;
-}
-
-figure {
-  z-order: 10;
-}
-
-/* becomes */
-
-aside {
-  z-index: 10;
-}
-
-figure {
-  z-index: 10;
-}
-```
-
-### overflow-wrap
-
-> `word-wrap`/`overflow-wrap` should not exist, and `overflow-wrap` should be a
-  keyword on `white-space`.
-
-```css
-a {
-  white-space: overflow-wrap;
-}
-
-/* becomes */
-
-a {
-  word-wrap: break-word;
+* {
+  box-sizing: border-box;
 }
 ```
 
@@ -164,11 +63,75 @@ button {
 }
 ```
 
-### rgb & hsl
+### display-type
 
-> `rgba()` and `hsla()` should not exist, and `rgb()` and `hsl()` should have
-  an optional fourth *alpha* parameter (which should use the same format as R,
-  G, and B or S and L).
+> The `display` property should be called `display-type`.
+
+```css
+.some-component {
+  display-type: grid;
+}
+
+/* becomes */
+
+.some-component {
+  display: grid;
+}
+```
+
+### marker-style
+
+> The `list-style` properties should be called `marker-style`.
+
+```css
+.georgian-list {
+  marker-style: square;
+}
+
+/* becomes */
+
+.georgian-list {
+  list-style: square;
+}
+```
+
+### no-wrap
+
+> In `white-space`, `nowrap` should be called `no-wrap`.
+
+```css
+h1 {
+  white-space: no-wrap;
+}
+
+/* becomes */
+
+h1 {
+  white-space: nowrap;
+}
+```
+
+### overflow-wrap
+
+> `word-wrap`/`overflow-wrap` should not exist, and `overflow-wrap` should be a
+  keyword on `white-space`.
+
+```css
+a {
+  white-space: overflow-wrap;
+}
+
+/* becomes */
+
+a {
+  word-wrap: break-word;
+}
+```
+
+### rgb-hsl
+
+> `rgb()` and `hsl()` should have an optional fourth *alpha* parameter
+  (which should use the same format as R, G, and B or S and L).
 
 ```css
 header {
@@ -181,6 +144,95 @@ header {
 header {
   background-color: rgba(0, 0, 255, .4);
   color: hsla(170, 50%, 45%, .8);
+}
+```
+
+### text-middle
+
+> In `vertical-align`, `middle` should be called `text-middle`.
+
+```css
+button {
+  vertical-align: text-middle;
+}
+
+/* becomes */
+
+button {
+  vertical-align: middle;
+}
+```
+
+### z-order
+
+> `z-index` should be called `z-order` or `depth`.
+
+```css
+aside {
+  depth: 10;
+}
+
+figure {
+  z-order: 10;
+}
+
+/* becomes */
+
+aside {
+  z-index: 10;
+}
+
+figure {
+  z-index: 10;
+}
+```
+
+## Unsafe Fixes
+
+These fixes change the way CSS normally works. They can be individually
+enabled or disabled by passing their short name into the
+[`fixes` option](#fixes), or by setting the
+[`useUnsafeFixes`](#useunsafefixes) option to `false`.
+
+### background-position
+
+> `background-position` and `border-spacing` (all 2-axis properties) should
+  take *vertical* first, to match with the 4-direction properties like `margin`.
+
+```css
+body {
+  background-position: 0% 50%;
+}
+
+table {
+  border-spacing: 10px 5px;
+}
+
+/* becomes */
+
+body {
+  background-position: 50% 0%;
+}
+
+table {
+  border-spacing: 5px 10px;
+}
+```
+
+### background-size
+
+> In `background-size`, having one value should duplicate its value, not
+default the second one to `auto`.
+
+```css
+header {
+  background-size: 75%;
+}
+
+/* becomes */
+
+header {
+  background-size: 75% 75%;
 }
 ```
 
@@ -202,23 +254,7 @@ p {
 }
 ```
 
-### marker-style
-
-> The `list-style` properties should be called `marker-style`.
-
-```css
-.georgian-list {
-  marker-style: square;
-}
-
-/* becomes */
-
-.georgian-list {
-  list-style: square;
-}
-```
-
-### :link
+### link-pseudo
 
 > `:link` should have had the `:any-link` semantics all along.
 
@@ -234,168 +270,70 @@ p {
 }
 ```
 
-### border-box
+## Advanced Usage
 
-> Box-sizing should be `border-box` by default.
-
-```css
-/* prepended to your css */
-
-* {
-  box-sizing: border-box;
-}
-```
-
-## Usage
-
-Add [Time Machine] to your build tool:
+Add [PostCSS Time Machine] to your project:
 
 ```bash
 npm install postcss-time-machine --save-dev
 ```
 
-#### Node
-
-Use [Time Machine] to process your CSS:
+Use [PostCSS Time Machine] to process your CSS:
 
 ```js
-import timeMachine from 'postcss-time-machine';
+const postcssTimeMachine = require('postcss-time-machine');
 
-timeMachine.process(YOUR_CSS);
+postcssTimeMachine.process(YOUR_CSS /*, processOptions, pluginOptions */);
 ```
 
-#### PostCSS
-
-Add [PostCSS] to your build tool:
-
-```bash
-npm install postcss --save-dev
-```
-
-Use [Time Machine] as a plugin:
+Or use it as a [PostCSS] plugin:
 
 ```js
-import postcss from 'gulp-postcss';
-import timeMachine from 'postcss-time-machine';
+const postcss = require('postcss');
+const postcssTimeMachine = require('postcss-time-machine');
 
 postcss([
-  timeMachine(/* options */)
-]).process(YOUR_CSS);
+  postcssTimeMachine(/* pluginOptions */)
+]).process(YOUR_CSS /*, processOptions */);
 ```
 
-#### Webpack
+[PostCSS Time Machine] runs in all Node environments, with special instructions for:
 
-Add [PostCSS Loader] to your build tool:
-
-```bash
-npm install postcss-loader --save-dev
-```
-
-Use [Time Machine] in your Webpack configuration:
-
-```js
-import timeMachine from 'postcss-time-machine';
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader', options: {
-            ident: 'postcss',
-            plugins: () => [
-              timeMachine(/* options */)
-            ]
-          } }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### Gulp
-
-Add [Gulp PostCSS] to your build tool:
-
-```bash
-npm install gulp-postcss --save-dev
-```
-
-Use [Time Machine] in your Gulpfile:
-
-```js
-import postcss from 'gulp-postcss';
-import timeMachine from 'postcss-time-machine';
-
-gulp.task('css', () => gulp.src('./src/*.css').pipe(
-  postcss([
-    timeMachine(/* options */)
-  ])
-).pipe(
-  gulp.dest('.')
-));
-```
-
-#### Grunt
-
-Add [Grunt PostCSS] to your build tool:
-
-```bash
-npm install grunt-postcss --save-dev
-```
-
-Use [Time Machine] in your Gruntfile:
-
-```js
-import timeMachine from 'postcss-time-machine';
-
-grunt.loadNpmTasks('grunt-postcss');
-
-grunt.initConfig({
-  postcss: {
-    options: {
-      use: [
-       timeMachine(/* options */)
-      ]
-    },
-    dist: {
-      src: '*.css'
-    }
-  }
-});
-```
+| [Node](INSTALL.md#node) | [PostCSS CLI](INSTALL.md#postcss-cli) | [Webpack](INSTALL.md#webpack) | [Create React App](INSTALL.md#create-react-app) | [Gulp](INSTALL.md#gulp) | [Grunt](INSTALL.md#grunt) |
+| --- | --- | --- | --- | --- | --- |
 
 ## Options
 
-Any feature of [Time Machine] may be disabled by passing a `false` value to its
-feature key.
+### fixes
 
-Example:
+The `fixes` option lets you individually enable or disable individual fixes.
+
 ```js
-require('postcss-time-machine')({
-    rgb: false
+postcssTimeMachine({
+  fixes: {
+    'border-box': false // disables adding * { box-sizing: border-box; }
+  }
 })
 ```
 
-Feature names include `background-position`, `background-size`,
-`border-spacing`, `box-sizing`, `corner-radius`, `current-color`, `depth`,
-`hsl`, `rgb`, `vertical-align`, `white-space`, `z-order`, and `:link`.
+### useUnsafeFixes
 
-[npm-url]: https://www.npmjs.com/package/postcss-time-machine
-[npm-img]: https://img.shields.io/npm/v/postcss-time-machine.svg
-[cli-url]: https://travis-ci.org/jonathantneal/postcss-time-machine
+The `useUnsafeFixes` option determines whether unsafe fixes will be applied or
+not. Individual features passed into the `fixes` option will override this. By
+default, unsafe features are enabled.
+
+```js
+postcssTimeMachine({
+  useUnsafeFixes: false // disables background-position, background-size, and line-height
+})
+```
+
 [cli-img]: https://img.shields.io/travis/jonathantneal/postcss-time-machine.svg
-[win-url]: https://ci.appveyor.com/project/jonathantneal/postcss-time-machine
-[win-img]: https://img.shields.io/appveyor/ci/jonathantneal/postcss-time-machine.svg
-[git-url]: https://gitter.im/postcss/postcss
+[cli-url]: https://travis-ci.org/jonathantneal/postcss-time-machine
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[npm-img]: https://img.shields.io/npm/v/postcss-time-machine.svg
+[npm-url]: https://www.npmjs.com/package/postcss-time-machine
 
-[Gulp PostCSS]: https://github.com/postcss/gulp-postcss
-[Grunt PostCSS]: https://github.com/nDmitry/grunt-postcss
 [PostCSS]: https://github.com/postcss/postcss
-[PostCSS Loader]: https://github.com/postcss/postcss-loader
-[Time Machine]: https://github.com/jonathantneal/postcss-time-machine
+[PostCSS Time Machine]: https://github.com/jonathantneal/postcss-time-machine

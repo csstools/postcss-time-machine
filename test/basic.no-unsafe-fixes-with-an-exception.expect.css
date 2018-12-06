@@ -1,4 +1,6 @@
-* {
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+*{
 	box-sizing: border-box;
 }
 
@@ -12,16 +14,16 @@
 
 .background-size {
 	background-size: 25% 75%;
-	background-size: 50% 50%;
+	background-size: 50%;
 	background-size: cover;
 }
 
 .background-position {
-	background-position: 100% 0%;
+	background-position: 0% 100%;
 }
 
 .border-spacing {
-	border-spacing: 100% 0%;
+	border-spacing: 0% 100%;
 }
 
 .depth {
@@ -53,7 +55,7 @@
 }
 
 .line-height {
-	line-height: 2;
+	line-height: 200%;
 }
 
 .marker-style {

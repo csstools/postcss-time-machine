@@ -1,15 +1,22 @@
-# Changes to Time Machine
+# Changes to PostCSS Time Machine
+
+### 4.0.0 (December 6, 2018)
+
+- Added: Support for PostCSS 7
+- Added: Support for Node 6
+- Replaced: `postcss-value-parser` with `postcss-values-parser` to 2.0.0 (major)
+- Updated: `postcss-selector-parser` to 5.0.0-rc.4 (major)
 
 ### 3.0.0 (May 17, 2016)
 
-- Added: Support for PostCSS 6.
-- Added: Support for Node 4.
+- Added: Support for PostCSS 6
+- Added: Support for Node 4
 
 ### 2.1.0 (March 1, 2017)
 
-- Added: `depth` property.
-- Updated: `box-sizing` does not re-orient imports.
-- Updated: `white-space` transforms.
+- Added: `depth` property
+- Updated: `box-sizing` does not re-orient imports
+- Updated: `white-space` transforms
 
 ### 2.0.1 (December 8, 2016)
 
